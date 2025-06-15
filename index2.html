@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tecnisur</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .product-card:hover {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .banner {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .banner .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #16a34acc; /* verde con opacidad */
+      clip-path: polygon(0 0, 60% 0, 35% 100%, 0% 100%);
+    }
+
+    .banner .content {
+      position: absolute;
+      top: 20%;
+      left: 10%;
+      color: white;
+    }
+  </style>
+</head>
+
+<body class="bg-green-50 text-gray-900">
+
+  <!-- Navbar -->
+  <header class="bg-green-800 text-white py-4 px-4 sm:px-6">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-3xl font-bold">Tecnisur</h1>
+      <div class="flex items-center space-x-4">
+        <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-white">
+          <a href="perfil.html"><img src="https://via.placeholder.com/150" alt="Perfil" class="w-full h-full object-cover avatar-img"></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banners -->
+  <section class="container mx-auto px-4 sm:px-6 py-8">
+    <a href="tecnicos.html"><div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="banner h-64 rounded shadow">
+        <img src="img/tecnico-icon.webp" alt="Banner 1">
+        <div class="overlay"></div>
+        <div class="content">
+          <h2 class="text-2xl font-bold">Técnicos</h2>
+          <a href="tecnicos.html" class="underline">Ver técnicos disponibles →</a>
+        </div>
+      </div></a>
+      <a href="comprarpiezas.html"><div class="banner h-64 rounded shadow">
+        <img src="img/refacciones-icon.jpg" alt="Banner 2">
+        <div class="overlay"></div>
+        <div class="content">
+          <h2 class="text-2xl font-bold">Refacciones</h2>
+          <a href="comprarpiezas.html" class="underline">Explorar componentes →</a>
+        </div>
+      </div>
+    </div></a>
+  </section>
+
+  <!-- Refacciones más vendidas -->
+  <section class="container mx-auto px-4 sm:px-6 pb-12">
+    <h2 class="text-xl font-bold mb-4 text-green-800">Refacciones más vendidas</h2>
+    <a href="comprarpiezas.html"><div class="flex space-x-4 overflow-x-auto pb-4">
+
+      <!-- Producto -->
+      <div class="border border-green-300 p-4 w-64 flex-shrink-0 product-card bg-white rounded shadow">
+        <img src="img/bateriahp-p14.webp" alt="Batería HP">
+        <p class="text-sm text-green-500 mt-2">Baterías</p>
+        <p class="font-bold">Batería HP Pavilion 14</p>
+        <p class="text-green-700 font-bold">$720.00</p>
+        <p class="text-yellow-500">★★★★☆</p>
+      </div>
+
+      <div class="border border-green-300 p-4 w-64 flex-shrink-0 product-card bg-white rounded shadow">
+        <img src="img/pantalla-xiaomi-RNote10.jpg" alt="Pantalla Xiaomi">
+        <p class="text-sm text-green-500 mt-2">Pantallas</p>
+        <p class="font-bold">Pantalla Xiaomi Redmi Note 10</p>
+        <p class="text-green-700 font-bold">$650.00</p>
+        <p class="text-yellow-500">★★★★★</p>
+      </div>
+
+      <div class="border border-green-300 p-4 w-64 flex-shrink-0 product-card bg-white rounded shadow">
+        <img src="img/Teclado para Dell Inspiron 15.webp" alt="Teclado Dell">
+        <p class="text-sm text-green-500 mt-2">Teclados</p>
+        <p class="font-bold">Teclado para Dell Inspiron 15</p>
+        <p class="text-green-700 font-bold">$340.00</p>
+        <p class="text-yellow-500">★★★☆☆</p>
+      </div>
+
+      <div class="border border-green-300 p-4 w-64 flex-shrink-0 product-card bg-white rounded shadow">
+        <img src="img/Cable Flex para Samsung A31.webp" alt="Flex cable">
+        <p class="text-sm text-green-500 mt-2">Cables Flex</p>
+        <p class="font-bold">Cable Flex para Samsung A31</p>
+        <p class="text-green-700 font-bold">$120.00</p>
+        <p class="text-yellow-500">★★★★☆</p>
+      </div>
+
+    </div></a>
+  </section>
+
+  <!-- Ofertas de la semana -->
+  <section class="container mx-auto px-4 sm:px-6 pb-12">
+    <h2 class="text-xl font-bold mb-4 text-green-800">Ofertas de la semana</h2>
+    <a href="comprarpiezas.html"><div class="flex space-x-4 overflow-x-auto pb-4">
+
+      <div class="border border-green-300 p-4 w-64 flex-shrink-0 product-card bg-white rounded shadow">
+        <img src="img/Batería Lenovo L15L2PB5.webp" alt="Batería Lenovo">
+        <p class="text-sm text-green-500 mt-2">Baterías</p>
+        <p class="font-bold">Batería Lenovo L15L2PB5</p>
+        <p class="text-green-700 font-bold">$590.00 <span class="line-through text-sm text-gray-400">$730.00</span></p>
+        <p class="text-yellow-500">★★★★☆</p>
+      </div>
+
+      <div class="border border-green-300 p-4 w-64 flex-shrink-0 product-card bg-white rounded shadow">
+        <img src="img/Pantalla Samsung A12 Original.jpg" alt="Pantalla Samsung A12">
+        <p class="text-sm text-green-500 mt-2">Pantallas</p>
+        <p class="font-bold">Pantalla Samsung A12 Original</p>
+        <p class="text-green-700 font-bold">$480.00 <span class="line-through text-sm text-gray-400">$560.00</span></p>
+        <p class="text-yellow-500">★★★★★</p>
+      </div>
+
+      <div class="border border-green-300 p-4 w-64 flex-shrink-0 product-card bg-white rounded shadow">
+        <img src="img/Teclado HP 15-BS 15-BW Negro Español.jpg" alt="Teclado HP">
+        <p class="text-sm text-green-500 mt-2">Teclados</p>
+        <p class="font-bold">Teclado HP 15-BS / 15-BW Negro Español</p>
+        <p class="text-green-700 font-bold">$310.00 <span class="line-through text-sm text-gray-400">$390.00</span></p>
+        <p class="text-yellow-500">★★★★☆</p>
+      </div>
+
+      <div class="border border-green-300 p-4 w-64 flex-shrink-0 product-card bg-white rounded shadow">
+        <img src="img/Flex Dock Carga iPhone 7 Plus.jpg" alt="Flex iPhone">
+        <p class="text-sm text-green-500 mt-2">Cables Flex</p>
+        <p class="font-bold">Flex Dock Carga iPhone 7 Plus</p>
+        <p class="text-green-700 font-bold">$95.00 <span class="line-through text-sm text-gray-400">$140.00</span></p>
+        <p class="text-yellow-500">★★★☆☆</p>
+      </div>
+
+    </div></a>
+  </section>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const imagenGuardada = localStorage.getItem("fotoPerfil");
+    const avatar = document.querySelector('.avatar-img');
+
+    if (imagenGuardada && avatar) {
+      avatar.src = imagenGuardada;
+    }
+  });
+</script>
+
+</body>
+</html>

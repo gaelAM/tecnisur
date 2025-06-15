@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Perfiles de Técnicos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f0fff5; /* verde muy claro */
+      color: #2c3e50;
+      padding-bottom: 70px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2e8b57; /* verde profesional */
+      margin: 1.5rem 0;
+      font-size: 28px;
+    }
+
+    .contenedor-tecnicos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      padding-bottom: 2rem;
+    }
+
+    .tecnico {
+      background-color: white;
+      border-radius: 16px;
+      padding: 1rem;
+      width: 280px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .tecnico:hover {
+      transform: translateY(-5px);
+    }
+
+    .tecnico img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+      border: 2px solid #2e8b57;
+    }
+
+    .tecnico h2 {
+      font-size: 18px;
+      color: #1e3d2f;
+      margin: 0.5rem 0;
+    }
+
+    .tecnico p {
+      margin: 4px 0;
+      font-size: 14px;
+    }
+
+    .calificacion {
+      color: gold;
+    }
+
+    .whatsapp-btn {
+      display: inline-block;
+      background-color: #25D366;
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 14px;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .whatsapp-btn:hover {
+      background-color: #1ebe5d;
+    }
+
+    @media (max-width: 600px) {
+      .tecnico {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Equipo Técnico Calificado</h1>
+
+  <div class="contenedor-tecnicos">
+
+    <!-- Técnico 1 -->
+    <div class="tecnico">
+      <img src="https://i.pravatar.cc/100?img=12" alt="Eduardo Martinez">
+      <h2>Jesus Torres - Tecnico en climas </h2>
+      <p><strong>📞</strong> +52 922 139 2170</p>
+      <p><strong>📧</strong> juan.electrico@gmail.com</p>
+      <p><strong>📍</strong> Ciudad de México</p>
+      <p><strong>💬</strong> Responsable con 10 años de experiencia.</p>
+      <p><strong>⭐</strong> <span class="calificacion">★★★★☆</span></p>
+      <a class="whatsapp-btn" href="https://wa.me/9221392170" target="_blank">WhatsApp</a>
+    </div>
+
+    <!-- Técnico 2 -->
+    <div class="tecnico">
+      <img src="https://i.pravatar.cc/100?img=33" alt="Luis Fernández">
+      <h2>Gael adonai- tecnico en computacion </h2>
+      <p><strong>📞</strong> +52 922 207 8593 </p>
+      <p><strong>📧</strong> luis.plomero@gmail.com</p>
+      <p><strong>📍</strong> Guadalajara</p>
+      <p><strong>💬</strong> Especialista en fugas y mantenimiento general.</p>
+      <p><strong>⭐</strong> <span class="calificacion">★★★★★</span></p>
+      <a class="whatsapp-btn" href="https://wa.me/9222078593 " target="_blank">WhatsApp</a>
+    </div>
+
+    <!-- Técnico 3 -->
+    <div class="tecnico">
+      <img src="https://st4.depositphotos.com/1001959/25058/i/450/depositphotos_250584168-stock-photo-technician-carefully-examines-the-integrity.jpg4" alt="María López">
+      <h2>Jose Eduardo - Técnico en celulares </h2>
+      <p><strong>📞</strong> +52 922 121 13 56 </p>
+      <p><strong>📧</strong> maria.frios@gmail.com</p>
+      <p><strong>📍</strong> Monterrey</p>
+      <p><strong>💬</strong> Profesional en sistemas de aire acondicionado.</p>
+      <p><strong>⭐</strong> <span class="calificacion">★★★★☆</span></p>
+      <a class="whatsapp-btn" href="https://wa.me/9221211356" target="_blank">WhatsApp</a>
+    </div>
+
+    <!-- Técnico 4 -->
+    <div class="tecnico">
+      <img src="https://i.pravatar.cc/100?img=45" alt="Carlos Díaz">
+      <h2>Guadalupe Ramos Ing en telecomunicaciones</h2>
+      <p><strong>📞</strong> +52 922 220 81 44</p>
+      <p><strong>📧</strong> carlos.pc@gmail.com</p>
+      <p><strong>📍</strong> Puebla</p>
+      <p><strong>💬</strong> Reparación, mantenimiento y formateo de equipos.</p>
+      <p><strong>⭐</strong> <span class="calificacion">★★★☆☆</span></p>
+      <a class="whatsapp-btn" href="https://wa.me/922208144" target="_blank">WhatsApp</a>
+    </div>
+    <!-- Técnico 5 -->
+    <div class="tecnico">
+      <img src="https://i.pravatar.cc/100?img=52" alt="Valeria Hernández">
+      <h2>Valeria Hernández - Técnica en Electrónica</h2>
+      <p><strong>📞</strong> +52 922 300 1122</p>
+      <p><strong>📧</strong> valeria.electronica@gmail.com</p>
+      <p><strong>📍</strong> Veracruz</p>
+      <p><strong>💬</strong> Reparación de televisores, consolas y más.</p>
+      <p><strong>⭐</strong> <span class="calificacion">★★★★☆</span></p>
+      <a class="whatsapp-btn" href="https://wa.me/522923001122" target="_blank">WhatsApp</a>
+    </div>
+
+    <!-- Técnico 6 -->
+    <div class="tecnico">
+      <img src="https://i.pravatar.cc/100?img=59" alt="Rafael Gómez">
+      <h2>Rafael Gómez - Técnico Mecánico</h2>
+      <p><strong>📞</strong> +52 922 340 9911</p>
+      <p><strong>📧</strong> rafael.mecanico@gmail.com</p>
+      <p><strong>📍</strong> Cancún</p>
+      <p><strong>💬</strong> Diagnóstico y reparación de automóviles.</p>
+      <p><strong>⭐</strong> <span class="calificacion">★★★★★</span></p>
+      <a class="whatsapp-btn" href="https://wa.me/522923409911" target="_blank">WhatsApp</a>
+    </div>
+
+    <!-- Técnico 7 -->
+    <div class="tecnico">
+      <img src="https://i.pravatar.cc/100?img=61" alt="Ana Rivera">
+      <h2>Ana Rivera - Técnica en Redes</h2>
+      <p><strong>📞</strong> +52 922 214 5566</p>
+      <p><strong>📧</strong> ana.redes@gmail.com</p>
+      <p><strong>📍</strong> Oaxaca</p>
+      <p><strong>💬</strong> Instalación de redes LAN/WiFi y soporte técnico.</p>
+      <p><strong>⭐</strong> <span class="calificacion">★★★★☆</span></p>
+      <a class="whatsapp-btn" href="https://wa.me/522922145566" target="_blank">WhatsApp</a>
+    </div>
+
+    <!-- Técnico 8 -->
+    <div class="tecnico">
+      <img src="https://i.pravatar.cc/100?img=64" alt="Miguel Ángel Soto">
+      <h2>Miguel Ángel Soto - Técnico en CCTV</h2>
+      <p><strong>📞</strong> +52 922 178 3344</p>
+      <p><strong>📧</strong> miguel.cctv@gmail.com</p>
+      <p><strong>📍</strong> Mérida</p>
+      <p><strong>💬</strong> Instalación y mantenimiento de cámaras de seguridad.</p>
+      <p><strong>⭐</strong> <span class="calificacion">★★★☆☆</span></p>
+      <a class="whatsapp-btn" href="https://wa.me/522921783344" target="_blank">WhatsApp</a>
+    </div>
+<a href="index2.html" style="
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  z-index: 1000;
+">
+  ⬅ Inicio
+</a>
+
+</body>
+</html>

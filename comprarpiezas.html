@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tienda de Refacciones</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding-bottom: 60px;
+      background: #f3fef4;
+    }
+
+    header {
+      background-color: #2d6a4f;
+      padding: 1rem;
+      color: white;
+    }
+
+    header h1 {
+      margin: 0 0 0.9rem 0;
+      font-size: 1.5rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      background-color: #40916c;
+      padding: 0.5rem;
+      border-radius: 8px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .carrito {
+      float: right;
+      margin-top: -3rem;
+      background: #1b4332;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .filtros {
+      padding: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      background: #e9f5ec;
+    }
+
+    .filtros input {
+      padding: 0.5rem;
+      width: 180px;
+    }
+
+    .productos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    .producto {
+      background: white;
+      border-radius: 8px;
+      padding: 1rem;
+      width: 220px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .producto img {
+      width: 100%;
+      height: 140px;
+      object-fit: contain;
+    }
+
+    button {
+      margin-top: 10px;
+      background: #52b788;
+      color: white;
+      border: none;
+      padding: 0.5rem;
+      width: 100%;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #carritoModal, #subirModal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    .cerrar {
+      float: right;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .pago select, .pago input {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .subir {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .subir input {
+      width: 100%;
+      margin-bottom: 0.5rem;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .subir h2 {
+      text-align: center;
+    }
+
+    .boton-mas {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background: #2d6a4f;
+      color: white;
+      font-size: 2rem;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Tienda de Refacciones</h1>
+    <div class="carrito" onclick="mostrarCarrito()">🛒 Ver carrito (<span id="contador">0</span>)</div>
+    <nav>
+      <a href="index2.html">Inicio</a>
+      <a href="tecnicos.html">Tecnicos</a>
+      <a href="perfil.html">Perfil</a>
+    </nav>
+  </header>
+
+  <div class="filtros">
+    <input type="text" id="buscador" placeholder="Buscar refacción..." oninput="cargarProductos()" />
+    <input type="number" id="precioMin" placeholder="Precio mínimo" oninput="cargarProductos()" />
+    <input type="number" id="precioMax" placeholder="Precio máximo" oninput="cargarProductos()" />
+  </div>
+
+  <div class="productos" id="productosContainer"></div>
+
+  <button class="boton-mas" onclick="abrirFormulario()">➕</button>
+
+  <!-- Modal para subir producto -->
+  <div id="subirModal">
+    <div class="modal-content">
+      <div class="cerrar" onclick="cerrarFormulario()">✖</div>
+      <div class="subir">
+        <h2>🧰 Subir Refacción</h2>
+        <input type="text" id="nombreProducto" placeholder="Nombre de la refacción" required>
+        <input type="number" id="precioProducto" placeholder="Precio" required>
+        <input type="file" id="imagenProducto" accept="image/*" required>
+        <button onclick="subirProducto()">Subir</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal del carrito -->
+  <div id="carritoModal">
+    <div class="modal-content">
+      <div class="cerrar" onclick="cerrarCarrito()">✖</div>
+      <h2>Carrito de Compras</h2>
+      <div id="listaCarrito"></div>
+      <div class="pago">
+        <label>Método de pago:</label>
+        <select id="metodoPago" onchange="mostrarCamposPago()">
+          <option value="">-- Selecciona --</option>
+          <option value="oxxo">OXXO</option>
+          <option value="paypal">PayPal</option>
+          <option value="bbva">BBVA</option>
+        </select>
+        <div id="camposPago"></div>
+        <button onclick="pagar()">Aceptar y Pagar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let productos = JSON.parse(localStorage.getItem('productos')) || [
+  // Refacciones más vendidas
+  { id: 1, nombre: "Batería HP Pavilion 14", precio: 720, img: "img/bateriahp-p14.webp" },
+  { id: 2, nombre: "Pantalla Xiaomi Redmi Note 10", precio: 650, img: "img/pantalla-xiaomi-RNote10.jpg" },
+  { id: 3, nombre: "Teclado para Dell Inspiron 15", precio: 340, img: "img/Teclado para Dell Inspiron 15.webp" },
+  { id: 4, nombre: "Cable Flex para Samsung A31", precio: 120, img: "img/Cable Flex para Samsung A31.webp" },
+
+  // Ofertas de la semana
+  { id: 5, nombre: "Batería Lenovo L15L2PB5", precio: 590, img: "img/Batería Lenovo L15L2PB5.webp" },
+  { id: 6, nombre: "Pantalla Samsung A12 Original", precio: 480, img: "img/Pantalla Samsung A12 Original.jpg" },
+  { id: 7, nombre: "Teclado HP 15-BS / 15-BW Negro Español", precio: 310, img: "img/Teclado HP 15-BS 15-BW Negro Español.jpg" },
+  { id: 8, nombre: "Flex Dock Carga iPhone 7 Plus", precio: 95, img: "img/Flex Dock Carga iPhone 7 Plus.jpg" }
+];
+
+
+    const carrito = [];
+
+    function guardarProductos() {
+      localStorage.setItem('productos', JSON.stringify(productos));
+    }
+
+    function cargarProductos() {
+      const cont = document.getElementById("productosContainer");
+      cont.innerHTML = "";
+
+      const texto = document.getElementById("buscador").value.toLowerCase();
+      const min = parseFloat(document.getElementById("precioMin").value) || 0;
+      const max = parseFloat(document.getElementById("precioMax").value) || Infinity;
+
+      const filtrados = productos.filter(p => 
+        p.nombre.toLowerCase().includes(texto) &&
+        p.precio >= min &&
+        p.precio <= max
+      );
+
+      if (filtrados.length === 0) {
+        cont.innerHTML = "<p>No se encontraron productos con esos filtros.</p>";
+        return;
+      }
+
+      filtrados.forEach(p => {
+        const div = document.createElement("div");
+        div.className = "producto";
+        div.innerHTML = `
+          <img src="${p.img}" alt="${p.nombre}" />
+          <h3>${p.nombre}</h3>
+          <p>$${p.precio}</p>
+          <button onclick="agregarCarrito(${p.id})">Agregar al carrito</button>
+        `;
+        cont.appendChild(div);
+      });
+    }
+
+    function agregarCarrito(id) {
+      const prod = productos.find(p => p.id === id);
+      carrito.push(prod);
+      document.getElementById("contador").innerText = carrito.length;
+    }
+
+    function mostrarCarrito() {
+      const lista = document.getElementById("listaCarrito");
+      lista.innerHTML = "";
+      if (carrito.length === 0) {
+        lista.innerHTML = "<p>El carrito está vacío.</p>";
+      } else {
+        carrito.forEach((p, i) => {
+          const item = document.createElement("p");
+          item.innerHTML = `${p.nombre} - $${p.precio} <button onclick="eliminar(${i})">❌</button>`;
+          lista.appendChild(item);
+        });
+      }
+      document.getElementById("carritoModal").style.display = "flex";
+    }
+
+    function eliminar(index) {
+      carrito.splice(index, 1);
+      document.getElementById("contador").innerText = carrito.length;
+      mostrarCarrito();
+    }
+
+    function cerrarCarrito() {
+      document.getElementById("carritoModal").style.display = "none";
+      document.getElementById("metodoPago").value = "";
+      document.getElementById("camposPago").innerHTML = "";
+    }
+
+    function mostrarCamposPago() {
+      const metodo = document.getElementById("metodoPago").value;
+      const campos = document.getElementById("camposPago");
+      campos.innerHTML = "";
+
+      if (metodo === "paypal") {
+        campos.innerHTML = `<input type="email" id="cuentaPago" placeholder="Correo de PayPal" required />`;
+      } else if (metodo === "oxxo") {
+        campos.innerHTML = `<input type="text" id="cuentaPago" placeholder="Número de referencia OXXO" required />`;
+      } else if (metodo === "bbva") {
+        campos.innerHTML = `<input type="text" id="cuentaPago" placeholder="Número de cuenta BBVA" required />`;
+      }
+    }
+
+    function pagar() {
+      const metodo = document.getElementById("metodoPago").value;
+      const cuenta = document.getElementById("cuentaPago")?.value;
+      const total = carrito.reduce((acc, p) => acc + p.precio, 0);
+
+      if (!metodo || !cuenta) {
+        alert("Por favor selecciona un método de pago y proporciona la información requerida.");
+        return;
+      }
+
+      alert(`✅ ¡Listo! Tu pago de $${total} con ${metodo.toUpperCase()} ha sido confirmado.\nCuenta/Referencia: ${cuenta}`);
+      carrito.length = 0;
+      document.getElementById("contador").innerText = "0";
+      cerrarCarrito();
+    }
+
+    function subirProducto() {
+      const nombre = document.getElementById("nombreProducto").value.trim();
+      const precio = parseFloat(document.getElementById("precioProducto").value);
+      const archivo = document.getElementById("imagenProducto").files[0];
+
+      if (!nombre || isNaN(precio) || !archivo) {
+        alert("Completa todos los campos.");
+        return;
+      }
+
+      const lector = new FileReader();
+      lector.onload = function(e) {
+        const nuevoProducto = {
+          id: Date.now(),
+          nombre,
+          precio,
+          img: e.target.result
+        };
+        productos.push(nuevoProducto);
+        guardarProductos();
+        cargarProductos();
+        cerrarFormulario();
+      };
+      lector.readAsDataURL(archivo);
+    }
+
+    function abrirFormulario() {
+      document.getElementById("subirModal").style.display = "flex";
+    }
+
+    function cerrarFormulario() {
+      document.getElementById("subirModal").style.display = "none";
+      document.getElementById("nombreProducto").value = "";
+      document.getElementById("precioProducto").value = "";
+      document.getElementById("imagenProducto").value = "";
+    }
+
+    cargarProductos();
+  </script>
+</body>
+</html>
